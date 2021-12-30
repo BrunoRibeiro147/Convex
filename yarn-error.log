@@ -1,0 +1,36 @@
+Arguments: 
+  /snap/node/5480/bin/node /usr/local/bin/yarn global dir --json
+
+PATH: 
+  /home/bruno/.zinit/polaris/bin:/home/bruno/.asdf/shims:/home/bruno/.asdf/bin:/home/bruno/.cargo/bin:/home/bruno/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/bruno/Android/Sdk/emulator:/home/bruno/Android/Sdk/tools:/home/bruno/Android/Sdk/tools/bin:/home/bruno/Android/Sdk/platform-tools:/home/bruno/development/flutter/bin:/path/to/elixir/bin:/home/bruno/.elixir-ls/release:/home/bruno/snap/flutter/common/flutter/.pub-cache/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  12.22.7
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: EACCES: permission denied, write
+      at writeSync (fs.js:679:3)
+      at SyncWriteStream._write (internal/fs/sync_write_stream.js:24:3)
+      at doWrite (_stream_writable.js:403:12)
+      at writeOrBuffer (_stream_writable.js:387:5)
+      at SyncWriteStream.Writable.write (_stream_writable.js:318:11)
+      at JSONReporter._dump (/usr/local/lib/node_modules/yarn/lib/cli.js:49772:12)
+      at JSONReporter.log (/usr/local/lib/node_modules/yarn/lib/cli.js:49800:10)
+      at dir (/usr/local/lib/node_modules/yarn/lib/cli.js:36256:14)
+      at Object.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:25940:25)
+      at Generator.next (<anonymous>)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
