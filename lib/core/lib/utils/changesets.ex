@@ -5,6 +5,8 @@ defmodule Core.Utils.Changesets do
 
   alias Ecto.Changeset
 
+  @allowed_currencies ["BRL", "USD", "EUR", "JPY"]
+
   @doc """
   Receives a schema module then casts and validates params using its changeset function.
   """
@@ -33,6 +35,24 @@ defmodule Core.Utils.Changesets do
 
       changeset ->
         raise Ecto.InvalidChangesetError, action: changeset.action, changeset: changeset
+    end
+  end
+
+  @doc """
+  Validates if the currency pass is allowed
+  """
+  @spec validate_currency(Ecto.Changeset.t(), atom()) :: Ecto.Changeset.t()
+  def validate_currency(changeset, field) do
+    with {:get_field, currency} when not is_nil(currency) <-
+           {:get_field, Changeset.get_field(changeset, field)},
+         true <- Enum.member?(@allowed_currencies, currency) do
+      changeset
+    else
+      {:get_field, nil} ->
+        Changeset.add_error(changeset, field, "Field was not found", validation: :invalid)
+
+      _ ->
+        Changeset.add_error(changeset, field, "This currency is not allowed", validation: :invalid)
     end
   end
 end
