@@ -1,4 +1,8 @@
 defmodule WebAPI.Telemetry do
+  @moduledoc """
+  Telemetry configuration for the WebAPI
+  """
+
   use Supervisor
   import Telemetry.Metrics
 

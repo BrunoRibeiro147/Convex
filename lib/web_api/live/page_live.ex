@@ -1,4 +1,8 @@
 defmodule WebAPI.PageLive do
+  @moduledoc """
+  Core module for PageLive
+  """
+
   use WebAPI, :live_view
 
   @impl true
