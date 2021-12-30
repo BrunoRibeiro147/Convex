@@ -51,7 +51,7 @@ defmodule Core.MixProject do
       {:dialyxir, "~> 1.1", only: [:dev, :test], runtime: false},
       {:ex_machina, "~> 2.7.0", only: [:dev, :test]},
       {:tesla, "~> 1.4"},
-      {:mime, "~> 1.0"},
+      {:mime, "~> 1.0"}
     ]
   end
 
