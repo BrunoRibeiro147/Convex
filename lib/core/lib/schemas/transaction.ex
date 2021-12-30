@@ -31,6 +31,5 @@ defmodule Core.Schemas.Transaction do
     |> cast(params, @required ++ @optional)
     |> put_change(:id, Ecto.UUID.generate())
     |> validate_required(@required)
-    |> assoc_constraint(:user_id)
   end
 end
