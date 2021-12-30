@@ -3,8 +3,8 @@ defmodule Core.Transaction.Services.CreateTransaction do
   Service to create a Transaction
   """
 
-  alias Core.Transaction
   alias Core.Schemas
+  alias Core.Transaction
 
   @spec execute(transaction :: Transaction.Commands.CreateTransaction.t()) :: map()
   def execute(%Transaction.Commands.CreateTransaction{} = create_transaction) do

@@ -1,9 +1,9 @@
 defmodule Core.Transaction.Services.CreateTransactionTest do
   use Core.DataCase
 
+  alias Core.Schemas
   alias Core.Transaction.Commands
   alias Core.Transaction.Services
-  alias Core.Schemas
 
   describe "execute/1" do
     setup do
