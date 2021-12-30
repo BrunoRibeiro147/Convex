@@ -11,9 +11,9 @@ defmodule Core.Schema do
 
       @type t :: %__MODULE__{}
 
-      @primary_key {:id, :binary_id, autogenerate: true}
+      @primary_key {:id, :string, []}
       @timestamps_opts [type: :utc_datetime_usec]
-      @foreign_key_type :binary_id
+      @foreign_key_type :string
     end
   end
 end
