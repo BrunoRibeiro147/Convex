@@ -14,7 +14,7 @@ defmodule Core.CurrencyConvertor.Commands.ConvertCurrency do
 
   embedded_schema do
     field :final_currency, :string
-    field :value, :integer
+    field :value, :float
     field :convertion_tax, :float
     field :converted_value, :string
   end

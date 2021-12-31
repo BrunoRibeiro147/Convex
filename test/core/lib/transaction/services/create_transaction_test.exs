@@ -13,7 +13,7 @@ defmodule Core.Transaction.Services.CreateTransactionTest do
         value: 1000,
         origin_currency: "BRL",
         final_currency: "USD",
-        convertion_tax: 450,
+        convertion_tax: 6.33,
         user_id: user_id
       }
 

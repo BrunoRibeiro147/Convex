@@ -9,7 +9,7 @@ defmodule Core.CurrencyConvertor.Services.ConvertCurrencyTest do
     setup do
       params = %Commands.ConvertCurrency{
         final_currency: "BRL",
-        value: 10
+        value: 10.0
       }
 
       %{params: params}
@@ -25,7 +25,7 @@ defmodule Core.CurrencyConvertor.Services.ConvertCurrencyTest do
                 converted_value: "R$ 63,10",
                 convertion_tax: 6.31,
                 final_currency: "BRL",
-                value: 10
+                value: 10.0
               }} = Services.ConvertCurrency.execute(params)
     end
 

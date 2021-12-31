@@ -21,9 +21,15 @@ defmodule WebAPI.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", WebAPI do
-  #   pipe_through :api
-  # end
+  scope "/api" do
+    pipe_through :api
+
+    post(
+      "/transactions/:user_id/convert_currency",
+      WebAPI.Controllers.Transactions,
+      :convert_currency
+    )
+  end
 
   # Enables LiveDashboard only for development
   #

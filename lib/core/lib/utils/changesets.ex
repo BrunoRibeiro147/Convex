@@ -49,10 +49,16 @@ defmodule Core.Utils.Changesets do
       changeset
     else
       {:get_field, nil} ->
-        Changeset.add_error(changeset, field, "Field was not found", validation: :invalid)
+        changeset
 
       _ ->
-        Changeset.add_error(changeset, field, "This currency is not allowed", validation: :invalid)
+        Changeset.add_error(
+          changeset,
+          field,
+          "This currency is not allowed the allowed currencies are: [" <>
+            Enum.join(@allowed_currencies, ", ") <> "]",
+          validation: :invalid
+        )
     end
   end
 end

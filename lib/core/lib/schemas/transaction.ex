@@ -15,10 +15,10 @@ defmodule Core.Schemas.Transaction do
   @optional []
 
   schema "transactions" do
-    field :origin_value, :integer
+    field :origin_value, :float
     field :origin_currency, :string
     field :final_currency, :string
-    field :convertion_tax, :integer
+    field :convertion_tax, :float
 
     belongs_to(:user, Core.Schemas.User)
 

@@ -17,8 +17,8 @@ defmodule Core.Transaction.Commands.CreateTransaction do
   embedded_schema do
     field :origin_currency, :string
     field :final_currency, :string
-    field :convertion_tax, :integer
-    field :value, :integer
+    field :convertion_tax, :float
+    field :value, :float
     field :user_id, Ecto.UUID
   end
 
