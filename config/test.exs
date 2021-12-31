@@ -13,5 +13,10 @@ config :convex, WebAPI.Endpoint,
   http: [port: 4002],
   server: false
 
+# Adapters
+
+config :convex, Core.Ports.FetchConvertionTax,
+  adapter: Core.Adapters.FetchConvertionTax.ExchangeRates.Mock
+
 # Print only warnings and errors during test
 config :logger, level: :warn

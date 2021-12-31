@@ -1,6 +1,6 @@
-defmodule Core.Transaction.Commands.CreateTransaction do
+defmodule Core.CurrencyConvertor.Commands.ConvertCurrency do
   @moduledoc """
-  Command to create a Transaction
+  Command to convert currency
   """
 
   use Core.EmbeddedSchema
@@ -8,18 +8,15 @@ defmodule Core.Transaction.Commands.CreateTransaction do
 
   @required [
     :value,
-    :final_currency,
-    :convertion_tax,
-    :user_id
+    :final_currency
   ]
   @optional []
 
   embedded_schema do
-    field :origin_currency, :string
     field :final_currency, :string
-    field :convertion_tax, :integer
     field :value, :integer
-    field :user_id, Ecto.UUID
+    field :convertion_tax, :float
+    field :converted_value, :string
   end
 
   @spec changeset(schema :: __MODULE__.t(), params :: map()) :: Ecto.Changeset.t()
@@ -27,7 +24,6 @@ defmodule Core.Transaction.Commands.CreateTransaction do
     schema
     |> cast(params, @required ++ @optional)
     |> validate_required(@required)
-    |> put_change(:origin_currency, "EUR")
     |> Utils.Changesets.validate_currency(:final_currency)
   end
 end

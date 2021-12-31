@@ -20,7 +20,7 @@ defmodule Core.Transaction.Commands.CreateTransactionTest do
       assert %Ecto.Changeset{valid?: true} = Commands.CreateTransaction.changeset(params)
     end
 
-    for field <- [:origin_currency, :final_currency, :convertion_tax] do
+    for field <- [:final_currency, :convertion_tax] do
       test "returns an invalid changeset if #{field} currency is not allowed", %{params: params} do
         assert %Ecto.Changeset{valid?: false} =
                  params
