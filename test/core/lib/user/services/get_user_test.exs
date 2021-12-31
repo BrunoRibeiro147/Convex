@@ -1,8 +1,8 @@
 defmodule Core.User.Services.GetUserTest do
   use Core.DataCase
 
-  alias Core.User.Services
   alias Core.Schemas
+  alias Core.User.Services
 
   describe "execute/1" do
     setup do
