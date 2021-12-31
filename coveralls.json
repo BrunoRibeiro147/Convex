@@ -1,0 +1,22 @@
+{
+	"skip_files": [
+		"test/support/data_case.ex",
+		"test/support/conn_case.ex",
+		"test/support/channel_case.ex",
+		"lib/web_api/views/error_helpers.ex",
+		"lib/web_api/channels/user_socket.ex",
+		"lib/web_api/router.ex",
+		"lib/web_api.ex",
+		"lib/web_api/helpers/error_responses.ex",
+		"lib/web_api/live/page_live.ex",
+		"lib/web_api/telemetry.ex",
+		"lib/core/application.ex",
+		"lib/core/lib/utils/changesets.ex",
+		"lib/core/lib/adapter/exchangerates/fetch_convertion_tax.ex"
+	],
+	"coverage_options": {
+			"treat_no_relevant_lines_as_covered": true,
+			"output_dir": "cover/",
+			"minimum_coverage": 95
+	}
+} 

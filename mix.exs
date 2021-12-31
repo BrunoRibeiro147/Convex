@@ -10,7 +10,14 @@ defmodule Core.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -54,7 +61,8 @@ defmodule Core.MixProject do
       {:mime, "~> 1.0"},
       {:decimal, "~> 2.0"},
       {:number, "~> 1.0.1"},
-      {:hammox, "~> 0.5", only: :test}
+      {:hammox, "~> 0.5", only: :test},
+      {:excoveralls, "~> 0.10", only: :test}
     ]
   end
 
