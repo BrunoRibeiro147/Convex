@@ -6,7 +6,8 @@ defmodule Core.CurrencyConvertor.Services.ConvertCurrency do
   alias Core.CurrencyConvertor
   alias Core.Ports
 
-  @spec execute(convert_currency :: CurrencyConvertor.Commands.ConvertCurrency) :: map()
+  @spec execute(convert_currency :: CurrencyConvertor.Commands.ConvertCurrency.t()) ::
+          {:ok, CurrencyConvertor.Commands.ConvertCurrency.t()} | {:error, reason :: term()}
   def execute(
         %CurrencyConvertor.Commands.ConvertCurrency{
           final_currency: final_currency,
@@ -21,9 +22,10 @@ defmodule Core.CurrencyConvertor.Services.ConvertCurrency do
         |> Decimal.mult(Decimal.new(value))
         |> Number.Currency.number_to_currency(format_currency(final_currency))
 
-      convert_currency
-      |> Map.put(:convertion_tax, Decimal.to_float(convertion_tax_with_precision))
-      |> Map.put(:converted_value, converted_value)
+      {:ok,
+       convert_currency
+       |> Map.put(:convertion_tax, Decimal.to_float(convertion_tax_with_precision))
+       |> Map.put(:converted_value, converted_value)}
     end
   end
 

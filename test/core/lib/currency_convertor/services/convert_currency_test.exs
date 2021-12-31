@@ -20,12 +20,13 @@ defmodule Core.CurrencyConvertor.Services.ConvertCurrencyTest do
         {:ok, 6.31}
       end)
 
-      assert %Commands.ConvertCurrency{
-               converted_value: "R$ 63,10",
-               convertion_tax: 6.31,
-               final_currency: "BRL",
-               value: 10
-             } = Services.ConvertCurrency.execute(params)
+      assert {:ok,
+              %Commands.ConvertCurrency{
+                converted_value: "R$ 63,10",
+                convertion_tax: 6.31,
+                final_currency: "BRL",
+                value: 10
+              }} = Services.ConvertCurrency.execute(params)
     end
 
     test "returns an error in case the api request fails", %{params: params} do
