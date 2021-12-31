@@ -1,4 +1,8 @@
 defmodule Core.CurrencyConvertor.Services.ConvertCurrency do
+  @moduledoc """
+  Service to calculate the currency convertion
+  """
+
   alias Core.CurrencyConvertor
   alias Core.Ports
 

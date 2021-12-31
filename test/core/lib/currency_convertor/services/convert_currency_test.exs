@@ -16,8 +16,9 @@ defmodule Core.CurrencyConvertor.Services.ConvertCurrencyTest do
     end
 
     test "get the convertion tax for the currency and the converted_value", %{params: params} do
-      Core.Adapters.FetchConvertionTax.ExchangeRates.Mock
-      |> expect(:fetch_convertion_tax, fn _ -> {:ok, 6.31} end)
+      expect(Core.Adapters.FetchConvertionTax.ExchangeRates.Mock, :fetch_convertion_tax, fn _ ->
+        {:ok, 6.31}
+      end)
 
       assert %Commands.ConvertCurrency{
                converted_value: "R$ 63,10",
@@ -28,8 +29,7 @@ defmodule Core.CurrencyConvertor.Services.ConvertCurrencyTest do
     end
 
     test "returns an error in case the api request fails", %{params: params} do
-      Core.Adapters.FetchConvertionTax.ExchangeRates.Mock
-      |> expect(:fetch_convertion_tax, fn _ ->
+      expect(Core.Adapters.FetchConvertionTax.ExchangeRates.Mock, :fetch_convertion_tax, fn _ ->
         {:error, "Occur an error while fetch api, try again"}
       end)
 

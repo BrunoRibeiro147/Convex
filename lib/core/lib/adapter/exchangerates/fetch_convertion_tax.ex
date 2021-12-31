@@ -1,10 +1,14 @@
 defmodule Core.Adapters.FetchConvertionTax.ExchangeRates do
+  @moduledoc """
+  Adapter for ExchangeRates implements FetchConvertionTax
+  """
+
+  @behaviour Core.Ports.FetchConvertionTax
+
   use Tesla
 
   plug Tesla.Middleware.BaseUrl, "http://api.exchangeratesapi.io/v1/"
   plug Tesla.Middleware.JSON
-
-  @behaviour Core.Ports.FetchConvertionTax
 
   @impl true
   def fetch_convertion_tax(currency) do
