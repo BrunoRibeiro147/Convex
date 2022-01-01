@@ -3,8 +3,8 @@ defmodule Core.Schemas.Transaction.Repository do
   Repository module for Transaction
   """
 
-  alias Core.Schemas
   import Ecto.Query
+  alias Core.Schemas
 
   @spec list_by_user_id(user_id :: Ecto.UUID.t()) :: transactions :: list(Schemas.Transaction.t())
   def list_by_user_id(user_id) do
