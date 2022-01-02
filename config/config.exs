@@ -18,6 +18,17 @@ config :convex, WebAPI.Endpoint,
   pubsub_server: Core.PubSub,
   live_view: [signing_salt: "1v+cnVfY"]
 
+# Configures the Swagger
+config :convex, :phoenix_swagger,
+  swagger_files: %{
+    "priv/static/swagger.json" => [
+      router: WebAPI.Router,
+      endpoint: WebAPI.Endpoint
+    ]
+  }
+
+config :phoenix_swagger, json_library: Jason
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
@@ -31,6 +42,8 @@ config :phoenix, :json_library, Jason
 config :convex, Core.Ports.FetchConvertionTax,
   adapter: Core.Adapters.FetchConvertionTax.ExchangeRates
 
+# Logger 
+config :logger, :console, metadata: :all
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

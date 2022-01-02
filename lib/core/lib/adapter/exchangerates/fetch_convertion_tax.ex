@@ -10,13 +10,20 @@ defmodule Core.Adapters.FetchConvertionTax.ExchangeRates do
   plug Tesla.Middleware.BaseUrl, "http://api.exchangeratesapi.io/v1/"
   plug Tesla.Middleware.JSON
 
+  require Logger
+
   @impl true
   def fetch_convertion_tax(currency) do
     case fetch_api(currency) do
       {:ok, %Tesla.Env{status: 200, body: %{"rates" => result}}} ->
         {:ok, Map.get(result, currency)}
 
-      _ ->
+      {:ok, %Tesla.Env{status: status, body: return}} ->
+        Logger.warn(
+          "An error occur when request: Status: #{status}, Reason:" <> Jason.encode!(return),
+          []
+        )
+
         {:error, "Occur an error while fetch api, try again"}
     end
   end

@@ -35,3 +35,6 @@ npm-debug.log
 
 # SQLite Database
 /database
+
+# Enviroment Variable 
+.env

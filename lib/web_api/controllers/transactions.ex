@@ -4,6 +4,7 @@ defmodule WebAPI.Controllers.Transactions do
   """
 
   use WebAPI, :controller
+  use WebAPI.Swagger.Transactions
 
   alias Core.CurrencyConvertor
   alias Core.Schemas

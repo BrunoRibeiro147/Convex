@@ -50,4 +50,29 @@ defmodule WebAPI.Router do
       live_dashboard "/dashboard", metrics: WebAPI.Telemetry
     end
   end
+
+  scope "/swagger" do
+    forward "/", PhoenixSwagger.Plug.SwaggerUI,
+      otp_app: :convex,
+      swagger_file: "swagger.json"
+  end
+
+  def swagger_info do
+    %{
+      schemes: ["http", "https", "ws", "wss"],
+      basePath: "/api/v1",
+      info: %{
+        version: "1.0",
+        title: "Convex",
+        description: "API Documentation for Convex v1",
+        termsOfService: "Open for public",
+        contact: %{
+          name: "Bruno Ribeiro",
+          email: "brf147@gmail.com"
+        }
+      },
+      consumes: ["application/json"],
+      produces: ["application/json"]
+    }
+  end
 end
