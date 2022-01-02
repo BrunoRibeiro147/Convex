@@ -141,4 +141,63 @@ defmodule WebAPI.Controllers.TransationsTest do
                |> json_response(503)
     end
   end
+
+  describe "index/2" do
+    setup do
+      %{id: user_id} = insert(:user)
+
+      insert_list(2, :transaction, user_id: user_id)
+
+      %{user_id: user_id}
+    end
+
+    test "returns status 200 and a list of Transactions belongs to the user_id", %{
+      conn: conn,
+      user_id: user_id
+    } do
+      assert %{
+               "data" => [
+                 %{
+                   "convertion_tax" => 6.33,
+                   "date_hour" => _date_hour_transaction_1,
+                   "final_currency" => "BRL",
+                   "id" => _id_transaction_1,
+                   "object" => "transaction",
+                   "origin_currency" => "EUR",
+                   "origin_value" => 10.0,
+                   "user_id" => ^user_id
+                 },
+                 %{
+                   "convertion_tax" => 6.33,
+                   "date_hour" => _date_hour_transaction_2,
+                   "final_currency" => "BRL",
+                   "id" => _id_transaction_2,
+                   "object" => "transaction",
+                   "origin_currency" => "EUR",
+                   "origin_value" => 10.0,
+                   "user_id" => ^user_id
+                 }
+               ],
+               "object" => "list"
+             } =
+               conn
+               |> get(Routes.transactions_path(conn, :index, user_id))
+               |> json_response(200)
+    end
+
+    test "returns status 404 if user does not exist", %{conn: conn} do
+      user_id = Ecto.UUID.generate()
+
+      assert %{
+               "error" => "not_found",
+               "reason" => %{
+                 "entity" => "user",
+                 "identifier" => ^user_id
+               }
+             } =
+               conn
+               |> get(Routes.transactions_path(conn, :index, user_id))
+               |> json_response(404)
+    end
+  end
 end

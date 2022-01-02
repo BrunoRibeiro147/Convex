@@ -33,6 +33,16 @@ defmodule WebAPI.Controllers.Transactions do
     end
   end
 
+  def index(conn, %{"user_id" => user_id}) do
+    case User.Services.GetUser.execute(user_id) do
+      {:ok, %Schemas.User{}} ->
+        render_transactions(conn, Transaction.Services.ListTransactions.execute(user_id))
+
+      {:error, :not_found} ->
+        ErrorResponses.not_found(conn, "user", user_id)
+    end
+  end
+
   defp call_command_service_convert_currency(params) do
     with {:ok, %CurrencyConvertor.Commands.ConvertCurrency{} = convert_currency_command} <-
            Utils.Changesets.cast_and_apply(CurrencyConvertor.Commands.ConvertCurrency, params) do
@@ -72,5 +82,11 @@ defmodule WebAPI.Controllers.Transactions do
     |> render("item.json", %{
       transaction: transaction
     })
+  end
+
+  defp render_transactions(conn, transactions) do
+    conn
+    |> put_view(WebAPI.Views.Transaction)
+    |> render("collection.json", entries: transactions)
   end
 end

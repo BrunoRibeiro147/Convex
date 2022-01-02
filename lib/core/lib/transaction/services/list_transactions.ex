@@ -1,4 +1,4 @@
-defmodule Core.Transactions.Services.ListTransactions do
+defmodule Core.Transaction.Services.ListTransactions do
   @moduledoc """
   Service to list Transactions by user_id
   """

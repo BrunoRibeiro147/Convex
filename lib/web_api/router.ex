@@ -24,11 +24,15 @@ defmodule WebAPI.Router do
   scope "/api" do
     pipe_through :api
 
-    post(
-      "/transactions/:user_id/convert_currency",
-      WebAPI.Controllers.Transactions,
-      :convert_currency
-    )
+    scope "/v1" do
+      get("/transactions/:user_id", WebAPI.Controllers.Transactions, :index)
+
+      post(
+        "/transactions/:user_id/convert_currency",
+        WebAPI.Controllers.Transactions,
+        :convert_currency
+      )
+    end
   end
 
   # Enables LiveDashboard only for development
