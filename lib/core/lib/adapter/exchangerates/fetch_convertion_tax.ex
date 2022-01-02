@@ -31,7 +31,7 @@ defmodule Core.Adapters.FetchConvertionTax.ExchangeRates do
   defp fetch_api(currency) do
     get("/latest",
       query: [
-        access_key: "8ed10c4b00be449829dce3d4daeda009",
+        access_key: System.get_env("EXCHANGE_RATES_ACCESS_KEY"),
         symbols: currency,
         format: 1
       ]
