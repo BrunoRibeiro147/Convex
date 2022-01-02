@@ -8,7 +8,7 @@ defmodule Core.Transaction.Services.ListTransactions do
   @doc """
   Returns a list of `transactions` belongs to the user of `user_id`
   """
-  @spec execute(user_id :: Ecto.UUID.t()) :: list(Schemas.Transactions.t())
+  @spec execute(user_id :: Ecto.UUID.t()) :: list(Schemas.Transaction.t())
   def execute(user_id) do
     with {:ok, _} <- cast_user_id(user_id) do
       Schemas.Transaction.Repository.list_by_user_id(user_id)
