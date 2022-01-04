@@ -48,6 +48,10 @@ Pronto, agora você pode entrar em [`localhost:4000`](http://localhost:4000) a p
 **API Insomnia**:
 Também está disponível no [`Convex System Design`](https://fern-silene-3c6.notion.site/Convex-f9a46f44844145199df33768fb00c14d) um arquivo com todas as requisições pré-definidas para ser importado no Insomnia
 
+**Disponibilidade**:
+A API foi deployada no Gigalixir e está disponível online em:
+https://convex.gigalixirapp.com/api/v1/
+
 ## Como executar os testes
 
 * Execute o comando `mix test` para executar todos os testes da aplicação
