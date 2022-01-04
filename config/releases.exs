@@ -4,8 +4,6 @@
 # remember to add this file to your .gitignore.
 import Config
 
-config :convex, Core.Repo, database: Path.expand(File.cwd!() <> "/database/database.db")
-
 secret_key_base =
   System.get_env("SECRET_KEY_BASE") ||
     raise """
@@ -18,7 +16,8 @@ config :convex, WebAPI.Endpoint,
     port: String.to_integer(System.get_env("PORT") || "4000"),
     transport_options: [socket_opts: [:inet6]]
   ],
-  secret_key_base: secret_key_base
+  secret_key_base: secret_key_base,
+  check_origin: false
 
 # ## Using releases (Elixir v1.9+)
 #

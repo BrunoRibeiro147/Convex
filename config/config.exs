@@ -10,6 +10,8 @@ use Mix.Config
 config :convex,
   ecto_repos: [Core.Repo]
 
+config :convex, Core.Repo, database: Path.expand(File.cwd!() <> "/database/database.db")
+
 # Configures the endpoint
 config :convex, WebAPI.Endpoint,
   url: [host: "localhost"],

@@ -1,7 +1,5 @@
 use Mix.Config
 
-config :convex, Core.Repo, database: Path.expand(File.cwd!() <> "/database/database.db")
-
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
