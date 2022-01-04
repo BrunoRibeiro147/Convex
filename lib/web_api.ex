@@ -30,7 +30,7 @@ defmodule WebAPI do
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/convex_web/templates",
+        root: "lib/web_api/templates",
         namespace: WebAPI
 
       # Import convenience functions from controllers
