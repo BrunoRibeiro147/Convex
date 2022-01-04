@@ -45,6 +45,9 @@ Após fazer o clone da aplicação, siga os passos:
 
 Pronto, agora você pode entrar em [`localhost:4000`](http://localhost:4000) a partir do seu navegador
 
+**API Insomnia**:
+Também está disponível no [`Convex System Design`](https://fern-silene-3c6.notion.site/Convex-f9a46f44844145199df33768fb00c14d) um arquivo com todas as requisições pré-definidas para ser importado no Insomnia
+
 ## Como executar os testes
 
 * Execute o comando `mix test` para executar todos os testes da aplicação
