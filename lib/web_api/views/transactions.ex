@@ -43,7 +43,7 @@ defmodule WebAPI.Views.Transaction do
       origin_currency: transaction.origin_currency,
       origin_value: transaction.origin_value,
       user_id: transaction.user_id,
-      date_hour: transaction.inserted_at
+      date_hour: Format.format_datetime_to_brazilian(transaction.inserted_at)
     }
 
   defp render_transaction(transaction),
