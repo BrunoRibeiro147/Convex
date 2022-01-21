@@ -20,7 +20,7 @@ Essa aplicação é uma API de conversão de moedas utilizando as taxas de moeda
 - Ex_machina: Ferramenta para criar dados de testes e facilitar os testes da aplicação
 - Swagger: Ferramenta para documentar os endpoints existentes na aplicação de forma fácil e legível
 
-### Arquitetura Hexadecimal
+### Arquitetura Hexagonal
 Nessa aplicação foi utilizada a arquitetura hexagonal, que divide a aplicação em Ports e Adapters para facilitar o desacoplamento do código e assim facilitar a manutenção do mesmo, caso queira saber mais: [`Desvendando a Arquitetura Hexagonal`](https://medium.com/tableless/desvendando-a-arquitetura-hexagonal-52c56f8824c) <br/>
 **Camadas do Código**:
 - Commands: São os DTOS, resposáveis por fazer a primeira checagem e validar os parâmetros enviados pelo usuário:
